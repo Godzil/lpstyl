@@ -1037,10 +1037,10 @@ size_t readFileScanline(char *bufK, char *bufC, char *bufM, char *bufY)
 					if((i & 0x03) == 0)
 					{
 						/* write the output */
-						*((unsigned char *)bufK)++ = cmyk & 0x000000FF;		cmyk >>= 8;
-						*((unsigned char *)bufY)++ = cmyk & 0x000000FF;		cmyk >>= 8;
-						*((unsigned char *)bufM)++ = cmyk & 0x000000FF;		cmyk >>= 8;
-						*((unsigned char *)bufC)++ = cmyk & 0x000000FF;
+						*((unsigned char *)bufK++) = cmyk & 0x000000FF;		cmyk >>= 8;
+						*((unsigned char *)bufY++) = cmyk & 0x000000FF;		cmyk >>= 8;
+						*((unsigned char *)bufM++) = cmyk & 0x000000FF;		cmyk >>= 8;
+						*((unsigned char *)bufC++) = cmyk & 0x000000FF;
 						cmyk = 0;
 					}
 				}
@@ -1053,10 +1053,10 @@ size_t readFileScanline(char *bufK, char *bufC, char *bufM, char *bufY)
 				}
 				
 				/* write the final part */
-				*((unsigned char *)bufK)++ = cmyk & 0x000000FF;		cmyk >>= 8;
-				*((unsigned char *)bufY)++ = cmyk & 0x000000FF;		cmyk >>= 8;
-				*((unsigned char *)bufM)++ = cmyk & 0x000000FF;		cmyk >>= 8;
-				*((unsigned char *)bufC)++ = cmyk & 0x000000FF;
+				*((unsigned char *)bufK++) = cmyk & 0x000000FF;		cmyk >>= 8;
+				*((unsigned char *)bufY++) = cmyk & 0x000000FF;		cmyk >>= 8;
+				*((unsigned char *)bufM++) = cmyk & 0x000000FF;		cmyk >>= 8;
+				*((unsigned char *)bufC++) = cmyk & 0x000000FF;
 			}
 			else
 			{

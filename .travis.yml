@@ -1,0 +1,23 @@
+language: c
+os:
+  - linux
+  - osx
+matrix:
+  allow_failures:
+    - os: osx
+
+#addons:
+#  apt:
+#    packages:
+#      - atalk
+
+compiler:
+  - clang
+  - gcc
+
+script:
+  - mkdir build
+  - cd build
+  - cmake -DBUILD_ATALK=OFF -DCMAKE_BUILD_TYPE=Release ..
+  - cmake --build .
+  - cd ..
