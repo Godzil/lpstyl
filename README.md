@@ -1,4 +1,6 @@
 # lpstyl version 0.9.9
+[![travis](https://travis-ci.org/Godzil/lpstyl.svg?branch=master)](https://travis-ci.org/Godzil/lpstyl)
+
 
 This is an Apple StyleWriter driver for un*x.  It was developed on
 NetBSD-mac68k, and has been reported to work on NetBSD-i386,
