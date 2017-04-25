@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# This script assumes that lpd passes the username and hostname of
+# the user that owns the print job in arguments 5 and 7, respectively.
+
+/usr/local/gnu/bin/gs -q -dNOPAUSE -sDEVICE=bitcmyk \
+	-r360x360 -g3060x3960 \
+	-sOutputFile=- - \
+|/usr/local/sbin/lpstyl -t bitcmyk -w 3060 -h 3960 \
+		-a 'PaperShredder:ColorStyleWriter2400AT' -u ${5}@${7}
+

@@ -1,0 +1,64 @@
+Using lpstyl over AppleTalk
+---------------------------
+
+Verison 0.9.9 of lpstyl contains preliminary support for StyleWriters
+connected to Ethernet with an "Apple StyleWriter Ethertalk Adapter".
+(Apple part number M4877.) This has only been tested with a
+StyleWriter 2400 and a 68k machine running NetBSD.  I'd be interested
+in the results people with other printer types and/or little-endian
+machines get with this code.
+
+I'd also like to find out whether this code will work with the
+"Farallon EtherMac iPrint Adapter SL", which is another device that
+performs a similar if not identical function and looks very similar
+to the Apple device (appears to be the same plastics), but is still
+in production.  (I'm pretty sure the Apple device has been
+discontinued.)  If you try this code out with one of these things,
+_please_ let me know what happens.
+
+You'll have to do a number of things to set this up:
+
+1)	Make sure netatalk is installed on your machine and compiled into the
+	kernel.  
+
+2)	Make sure your machine is set up to communicate over AppleTalk.  This
+	is a bit complex, and full instructions are included with the
+	netatalk package.  atalkd should be running, 'ifconfig -a' should
+	show an AppleTalk address bound to your Ethernet interface(s),
+	and 'netstat -r' should show some AppleTalk routes.
+
+3)	Find out where the atalk headers and libraries are installed.  
+	(The included makefile assumes they are in 
+	/usr/local/include/atalk/ and /usr/local/lib, respectively.)
+
+4)	Set up your printer and Ethernet adapter, and attach them to the
+	network.  You may want to use the MacOS driver to set the name
+	of the printer to something reasonable.  In the examples here,
+	the printer is a StyleWriter 2400 with the name "PaperShredder".
+
+5)	Find out your printer's nbp name.  This can be done with the
+	netatalk tool 'nbplkup'.  It will give you a number of lines of
+	output, one of which contains the name you gave your printer.
+	On my system, this line is:
+
+	PaperShredder:ColorStyleWriter2400AT             65280.1:129
+
+6)	Compile and install a version of lpstyl with AppleTalk support.
+	The easiest way to do this is to use the Makefile.atalk included
+	with the package.  Copy it to 'Makefile' and do 'make lpstyl'.
+
+	Note that a version compiled with AppleTalk support will still be 
+	able to print to serial connections.
+
+7)	Install lpstyl and the driver scripts as usual.  Modify the printcap
+	entry you want to use so that it points to one of the *-atalk scripts,
+	and change the name of the AppleTalk device in that script to
+	the name you retrieved in step 5.
+
+That should be it.  Try printing something.  If it doesn't work, add
+'-vvvvv' to the lpstyl invocation in the script you're using and examine
+the results in lpd-errs.  If they're not self-explanatory, send me mail
+and we'll try and figure it out.
+
+-- Monroe Williams  a.k.a.  monroe@pobox.com --
+Copyright 1996-2000 Monroe Williams, all rights reserved.

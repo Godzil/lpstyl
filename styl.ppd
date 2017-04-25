@@ -1,0 +1,234 @@
+*PPD-Adobe: "4.3"
+*FormatVersion: "4.3"
+*FileVersion: "1.0"
+*LanguageVersion: English
+*LanguageEncoding: ISOLatin1
+*PCFileName: "STYLPSGS.PPD"
+
+*ShortNickName: "stylps color"
+*NickName: "StyleWriter 2400"
+*ModelName: "StyleWriter 2400/GhostScript"
+*Product: "(Aladdin Ghostscript)"
+*PSVersion: "(2010) 401"
+*PSVersion: "(2010) 510"
+*Manufacturer: None
+
+*% Written by Monroe Williams <monroe@pobox.com> for use with the
+*% 'lpstyl' StyleWriter driver and GhostScript.  For more information,
+*% see <http://www.pobox.com/~monroe/styl/>.
+
+*% ==============Constraints =================
+
+*UIConstraints: *ColorModel DeviceCMYK *BitsPerPixel None
+
+*% =========== Device Capabilities ===============
+
+*LanguageLevel: "2"
+*FreeVM: "4076994"
+*ColorDevice:  True
+*DefaultColorSpace: CMYK
+*Throughput: "2"
+*TTRasterizer: None
+
+*Password: "()" 
+
+*Resolution 360dpi: ""
+*DefaultResolution: 360dpi
+
+*% ============Paper Size Information ==============
+
+*DefaultPageSize: Letter
+*PageSize Letter/US Letter: "1 dict dup /PageSize [612 792] put setpagedevice"
+
+*DefaultPageRegion: Letter
+*PageRegion Letter/US Letter: "1 dict dup /PageSize [612 792] put setpagedevice"
+
+*DefaultImageableArea: Letter
+*ImageableArea Letter/US Letter: "18 18 576 756"
+
+*DefaultPaperDimension: Letter
+*PaperDimension Letter: "612 792"
+
+*HWMargins: "18 18 18 18"
+
+*DefaultFont: Courier
+
+*% Actual fonts
+
+*Font URWBookmanL-DemiBold: Standard "(001.000)" Standard ROM
+*Font URWBookmanL-DemiBoldItal: Standard "(001.000)" Standard ROM
+*Font URWBookmanL-Ligh: Standard "(001.000)" Standard ROM
+*Font URWBookmanL-LighItal: Standard "(001.000)" Standard ROM
+
+*Font NimbusMonL-Regu: Standard "(001.000)" Standard ROM
+*Font NimbusMonL-ReguObli: Standard "(001.000)" Standard ROM
+*Font NimbusMonL-Bold: Standard "(001.000)" Standard ROM
+*Font NimbusMonL-BoldObli: Standard "(001.000)" Standard ROM
+
+*Font URWGothicL-Book: Standard "(001.000)" Standard ROM
+*Font URWGothicL-BookObli: Standard "(001.000)" Standard ROM
+*Font URWGothicL-Demi: Standard "(001.000)" Standard ROM
+*Font URWGothicL-DemiObli: Standard "(001.000)" Standard ROM
+
+*Font NimbusSanL-Regu: Standard "(001.000)" Standard ROM
+*Font NimbusSanL-ReguItal: Standard "(001.000)" Standard ROM
+*Font NimbusSanL-Bold: Standard "(001.000)" Standard ROM
+*Font NimbusSanL-BoldItal: Standard "(001.000)" Standard ROM
+
+*Font NimbusSanL-ReguCond: Standard "(001.000)" Standard ROM
+*Font NimbusSanL-ReguCondItal: Standard "(001.000)" Standard ROM
+*Font NimbusSanL-BoldCond: Standard "(001.000)" Standard ROM
+*Font NimbusSanL-BoldCondItal: Standard "(001.000)" Standard ROM
+
+*Font URWPalladioL-Roma: Standard "(001.000)" Standard ROM
+*Font URWPalladioL-Ital: Standard "(001.000)" Standard ROM
+*Font URWPalladioL-Bold: Standard "(001.000)" Standard ROM
+*Font URWPalladioL-BoldItal: Standard "(001.000)" Standard ROM
+
+*Font CenturySchL-Roma: Standard "(001.000)" Standard ROM
+*Font CenturySchL-Ital: Standard "(001.000)" Standard ROM
+*Font CenturySchL-Bold: Standard "(001.000)" Standard ROM
+*Font CenturySchL-BoldItal: Standard "(001.000)" Standard ROM
+
+*Font NimbusRomNo9L-Regu: Standard "(001.000)" Standard ROM
+*Font NimbusRomNo9L-ReguItal: Standard "(001.000)" Standard ROM
+*Font NimbusRomNo9L-Medi: Standard "(001.000)" Standard ROM
+*Font NimbusRomNo9L-MediItal: Standard "(001.000)" Standard ROM
+
+*Font StandardSymL: Standard "(001.000)" Standard ROM
+
+*Font URWChanceryL-MediItal: Standard "(001.000)" Standard ROM
+
+*% --- Aliases ---
+
+*Font Dingbats: Standard "(001.000)" Standard ROM
+*Font Bookman-Demi: Standard "(001.000)" Standard ROM
+*Font Bookman-DemiItalic: Standard "(001.000)" Standard ROM
+*Font Bookman-Light: Standard "(001.000)" Standard ROM
+*Font Bookman-LightItalic: Standard "(001.000)" Standard ROM
+
+*Font Courier: Standard "(001.000)" Standard ROM
+*Font Courier-Oblique: Standard "(001.000)" Standard ROM
+*Font Courier-Bold: Standard "(001.000)" Standard ROM
+*Font Courier-BoldOblique: Standard "(001.000)" Standard ROM
+
+*Font AvantGarde-Book: Standard "(001.000)" Standard ROM
+*Font AvantGarde-BookOblique: Standard "(001.000)" Standard ROM
+*Font AvantGarde-Demi: Standard "(001.000)" Standard ROM
+*Font AvantGarde-DemiOblique: Standard "(001.000)" Standard ROM
+
+*Font Helvetica: Standard "(001.000)" Standard ROM
+*Font Helvetica-Oblique: Standard "(001.000)" Standard ROM
+*Font Helvetica-Bold: Standard "(001.000)" Standard ROM
+*Font Helvetica-BoldOblique: Standard "(001.000)" Standard ROM
+
+*Font Helvetica-Narrow: Standard "(001.000)" Standard ROM
+*Font Helvetica-Narrow-Oblique: Standard "(001.000)" Standard ROM
+*Font Helvetica-Narrow-Bold: Standard "(001.000)" Standard ROM
+*Font Helvetica-Narrow-BoldOblique: Standard "(001.000)" Standard ROM
+
+*Font Palatino-Roman: Standard "(001.000)" Standard ROM
+*Font Palatino-Italic: Standard "(001.000)" Standard ROM
+*Font Palatino-Bold: Standard "(001.000)" Standard ROM
+*Font Palatino-BoldItalic: Standard "(001.000)" Standard ROM
+
+*Font NewCenturySchlbk-Roman: Standard "(001.000)" Standard ROM
+*Font NewCenturySchlbk-Italic: Standard "(001.000)" Standard ROM
+*Font NewCenturySchlbk-Bold: Standard "(001.000)" Standard ROM
+*Font NewCenturySchlbk-BoldItalic: Standard "(001.000)" Standard ROM
+
+*Font Times-Roman: Standard "(001.000)" Standard ROM
+*Font Times-Italic: Standard "(001.000)" Standard ROM
+*Font Times-Bold: Standard "(001.000)" Standard ROM
+*Font Times-BoldItalic: Standard "(001.000)" Standard ROM
+
+*Font Symbol: Standard "(001.000)" Standard ROM
+
+*Font ZapfChancery-MediumItalic: Standard "(001.000)" Standard ROM
+
+*Font ZapfDingbats: Standard "(001.000)" Standard ROM
+
+*% --- Contributed fonts ---
+
+*Font Charter-Roman: Standard "(001.000)" Standard ROM
+*Font Charter-Italic: Standard "(001.000)" Standard ROM
+*Font Charter-Bold: Standard "(001.000)" Standard ROM
+*Font Charter-BoldItalic: Standard "(001.000)" Standard ROM
+
+
+*Font Utopia-Regular: Standard "(001.000)" Standard ROM
+*Font Utopia-Italic: Standard "(001.000)" Standard ROM
+*Font Utopia-Bold: Standard "(001.000)" Standard ROM
+*Font Utopia-BoldItalic: Standard "(001.000)" Standard ROM
+
+
+*Font URWAntiquaT-RegularCondensed: Standard "(001.000)" Standard ROM
+*Font URWGroteskT-Bold: Standard "(001.000)" Standard ROM
+
+
+*Font Calligraphic-Hiragana: Standard "(001.000)" Standard ROM
+*Font Calligraphic-Katakana: Standard "(001.000)" Standard ROM
+
+
+*Font Shareware-Cyrillic-Regular: Standard "(001.000)" Standard ROM
+*Font Shareware-Cyrillic-Italic: Standard "(001.000)" Standard ROM
+
+*% Aliases
+*Font Cyrillic: Standard "(001.000)" Standard ROM
+*Font Cyrillic-Regular: Standard "(001.000)" Standard ROM
+*Font Cyrillic-Italic: Standard "(001.000)" Standard ROM
+
+*Font Hershey-Gothic-English: Standard "(001.000)" Standard ROM
+*Font Hershey-Gothic-German: Standard "(001.000)" Standard ROM
+*Font Hershey-Gothic-Italian: Standard "(001.000)" Standard ROM
+
+*Font Hershey-Plain-Duplex: Standard "(001.000)" Standard ROM
+*Font Hershey-Plain-Duplex-Italic: Standard "(001.000)" Standard ROM
+*Font Hershey-Plain-Triplex: Standard "(001.000)" Standard ROM
+*Font Hershey-Plain-Triplex-Italic: Standard "(001.000)" Standard ROM
+
+*Font Hershey-Script-Complex: Standard "(001.000)" Standard ROM
+*Font Hershey-Script-Simplex: Standard "(001.000)" Standard ROM
+
+*% Fonts created algorithmically from the above.
+
+*Font Hershey-Gothic-English-Bold: Standard "(001.000)" Standard ROM
+*Font Hershey-Gothic-English-Oblique: Standard "(001.000)" Standard ROM
+*Font Hershey-Gothic-English-SemiBold: Standard "(001.000)" Standard ROM
+*Font Hershey-Gothic-German-Bold: Standard "(001.000)" Standard ROM
+*Font Hershey-Gothic-German-Oblique: Standard "(001.000)" Standard ROM
+*Font Hershey-Gothic-Italian-Bold: Standard "(001.000)" Standard ROM
+*Font Hershey-Gothic-Italian-Oblique: Standard "(001.000)" Standard ROM
+
+*Font Hershey-Plain-Duplex-Bold: Standard "(001.000)" Standard ROM
+*Font Hershey-Plain-Duplex-Bold-Italic: Standard "(001.000)" Standard ROM
+*Font Hershey-Plain-Triplex-Bold: Standard "(001.000)" Standard ROM
+*Font Hershey-Plain-Triplex-Bold-Italic: Standard "(001.000)" Standard ROM
+
+*Font Hershey-Script-Complex-Bold: Standard "(001.000)" Standard ROM
+*Font Hershey-Script-Complex-Oblique: Standard "(001.000)" Standard ROM
+*Font Hershey-Script-Simplex-Bold: Standard "(001.000)" Standard ROM
+*Font Hershey-Script-Simplex-Oblique: Standard "(001.000)" Standard ROM
+
+*% Fonts consisting only of characters from the original Hershey
+*% distribution.  These are Type 3 fonts.
+
+*Font Hershey-Greek-Complex: Standard "(001.000)" Standard ROM
+*Font Hershey-Greek-Simplex: Standard "(001.000)" Standard ROM
+
+*Font Hershey-Plain: Standard "(001.000)" Standard ROM
+*Font Hershey-Plain-Simplex: Standard "(001.000)" Standard ROM
+
+*% Fonts created algorithmically from the above.
+
+*Font Hershey-Plain-Bold: Standard "(001.000)" Standard ROM
+*Font Hershey-Plain-Bold-Oblique: Standard "(001.000)" Standard ROM
+*Font Hershey-Plain-Oblique: Standard "(001.000)" Standard ROM
+*Font Hershey-Plain-Simplex-Bold: Standard "(001.000)" Standard ROM
+*Font Hershey-Plain-Simplex-Bold-Oblique: Standard "(001.000)" Standard ROM
+*Font Hershey-Plain-Simplex-Oblique: Standard "(001.000)" Standard ROM
+
+*% This font, and only this font among the Hershey fonts, uses
+*% the SymbolEncoding.
+
+*Font Hershey-Symbol: Standard "(001.000)" Standard ROM

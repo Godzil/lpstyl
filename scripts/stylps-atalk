@@ -1,0 +1,9 @@
+#!/bin/sh
+
+# This script assumes that lpd passes the username and hostname of
+# the user that owns the print job in arguments 5 and 7, respectively.
+
+/usr/local/gnu/bin/gs -q -dNOPAUSE -dSAFER -sDEVICE=pbmraw -r360x360 \
+	-sOutputFile=- - \
+|/usr/local/sbin/lpstyl -a 'PaperShredder:ColorStyleWriter2400AT' -u ${5}@${7}
+

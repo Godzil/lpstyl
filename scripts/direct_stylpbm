@@ -1,0 +1,4 @@
+#!/bin/sh
+
+cat $* |\
+/usr/local/sbin/lpstyl -t pbmraw -f /dev/stylewriter

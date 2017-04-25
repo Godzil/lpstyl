@@ -1,0 +1,168 @@
+This file is an explanation of what I've figured out about control codes
+for StyleWriter printers.  If you just want to use the driver, you
+don't need to read any further -- this is here purely to satisfy
+curiosity about how the driver works (or fails to work, as the
+case may be).
+
+If you have specific questions you would like to see answered here in
+future versions, send them to monroe@pobox.com.
+
+
+All StyleWriters use a serial interface.  They have a standard RS422
+DIN8 plug, which is electrically compatible with RS232 given the
+right plug adapter.  At power-on, they default to communicating at
+57600 baud, and later models can be put into a mode where they
+externally clock the serial port at a rate close to 1 megabit.
+
+The communication protocol with the printer uses _no_ flow control
+in the traditional sense.  There is no hardware handshaking and
+no XON/XOFF flow control.  The driver must be aware of the size of
+the printer's buffer, and not send too much data at one time.  One
+of the codes the driver can send causes the printer to return a
+byte which seems to indicate how full its buffer is.  The driver
+could potentially use this information to keep feeding data as
+quickly as possible, but it currently just waits for the buffer to
+drain completely before sending more data.
+
+This protocol is the main reason that the driver is a standalone
+program, and not simply a driver module in ghostscript.  When I
+started work on the driver, I looked into making a gs driver module,
+but the architecture didn't seem to support two-way communication
+with the printer.  It's possible that later versions of ghostscript
+have removed this limitation, but I haven't looked at it lately.
+
+StyleWriters are rather unforgiving to experimentation.  Sending
+a control code that the printer doesn't understand or a buffer of
+image data that has been encoded incorrectly causes the printer to
+eject the page and reset itself.  
+
+
+Sending the question mark character '?' causes the printer to return
+a string identifying which model it is.  The string is terminated
+with a carriage return (character 0x0D).
+
+All other control codes seem to be of one of two types.  One type
+consists of four characters; three 0xFF bytes followed by a one-byte
+code.  The other type consists of one- or two-byte codes that are
+not preceeded by 0xFF bytes.  The first type causes the printer to
+send back one byte of data, usually some sort of error code or
+configuration information.  The second type causes no reply.  I
+speculate that the first type could be sent in the middle of a
+block of image data -- because of the data encoding used, there
+should never be three 0xFF bytes in a row in the image data.
+
+All of the definitions of control codes given here were arrived at
+by deduction or simple trial and error.  This should not be taken
+as definitive information.  If you find errors or omissions in this
+list, or figure out anything interesting that belongs here, please
+send your information to monroe@pobox.com.
+
+
+
+Known ident strings:
+
+"IJ10\r" = StyleWriter I
+"SW\r"   = StyleWriter II
+"SW3\r"  = StyleWriter 1200
+"CS\r"   = Color Stylewriter 1500, 2200, 2400 or 2500
+
+Type 1 codes (prefix these with "\xFF\xFF\xFF"):
+
+"I" - Ejects the page and resets the printer.
+"1" - Returns something about the status of the printer.
+"2" - Returns error status of the printer.  The return value may actually 
+	consist of bitfields.  Known return values:
+	0x00 -- nothing wrong
+	0x80 -- nothing wrong (possibly "bad command?)
+	0x04 -- printer is out of paper
+
+"B" - Returns the status of the printer's buffer.  The meaning of the
+	return value is different on different printer models.  On the 2400,
+	0xF8 means the buffer is empty, and lower values indicate more data
+	in the buffer.  On the 2500, 0x80 means the buffer is empty, and lower
+	values indicate more data in the buffer.  I don't know what values
+	indicate a completely full buffer on either model.
+
+"p" - Distinguishes between the printers that return 'CS'.  Known return 
+	values:
+	0x01 -- StyleWriter 2400
+	0x02 -- StyleWriter 2200
+	0x04 -- StyleWriter 1500
+	0x05 -- StyleWriter 2500
+	Honorable mention goes to the person who finds a printer with 0x03 as 
+	its 'p' code.
+
+"S" - Tells the printer to try again after it has reported being out of
+	paper.  This code is only known to work on the 2400/2500.
+
+"H" - Tells something about the configuration of the printer.  The return
+	value may actually consist of bitfields.  Known return values:
+	0x01 -- Black ink cartridge installed (in 2400/2500)
+	0x81 -- Color ink cartridge installed (in 2400/2500)
+
+"R" - Not sure, but it seems to have something to do with turning on
+	high-quality printing on the 2400/2500.
+
+
+Type 2 codes (sent by themselves):
+
+"?" - Tells the printer to return its ID string.
+
+"\x0C" - Marks the end of the data for a page.
+
+"nuA" - Start a new page on a StyleWriter I.
+
+"L" - Start a new page on all other StyleWriters.
+
+The following were gleaned from the MacOS printer drivers, and are used while
+setting up the printer.  I don't know exactly what some of them do.
+
+"D" - I don't remember.
+
+"N" - I don't remember.
+
+"m0nZAH" - Sets up for normal-quality printing.
+
+"m0sAB" - Sets up for high-quality printing.
+
+
+Image Data
+----------
+
+Bitmap data for the printer to print is sent in encoded blocks.
+Each block consists of a rectangle in printer coordinates, the
+two-byte length of the data, and the encoded scanlines in top-to-bottom
+order.  Printer coordinates have (0,0) at the top left of the
+_printable_ area of the page.  This means that the top and left
+margins must be dealt with by the driver.  Very similar formats
+are used for monochrome and color data.
+
+The overall format of a data block is as follows:
+
+'R' for monochrome or 'c' for color
+<LSB of rect.left>
+<MSB of rect.left>
+<LSB of rect.top>
+<MSB of rect.top>
+<LSB of rect.right>
+<MSB of rect.right>
+<LSB of rect.bottom>
+<MSB of rect.bottom>
+'G'
+<LSB of size>
+<MSB of size>
+<'size' bytes of encoded data>
+'\0'
+
+Bitmap data is encoded using a modified RLE scheme with differencing
+from previous lines.  The differencing algorithm is reset for each
+new block of data that is sent.  For color data, the bitmap for
+each plane (C,M,Y,K) is encoded separately and the encoded data
+for the planes in each scanline is interleaved in CMYK order.
+
+The encoding scheme is best described by the code in the function
+encodescanline().  The code was written while figuring out the
+encoding scheme by trial-and-error.  During the course of this it
+was redesigned and rewritten several times, and it's not pretty,
+but it works.
+

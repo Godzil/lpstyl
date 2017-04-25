@@ -1,0 +1,45 @@
+Troubleshooting problems with lpstyl
+------------------------------------
+
+Before you send me email with questions about this driver, please do two
+things:
+
+- Read through this file and make sure your question isn't answered here
+
+- Add the flag '-vvvvv' to the invocation of 'lpstyl' in whichever driver
+	script you're using, and look at the output in the lpd-errs file.
+	Without this information, it's very unlikely that I'll be able to
+	make any useful suggestions.
+
+
+Q:	"lpr gives me the message 'jobs queued, but cannot start daemon.'"
+
+A:	lpd needs to be running for printing to work.  What's more, it needs
+	to run as root to work correctly.  lpd is normally run from the system
+	startup scripts, and most systems have a config file that determines
+	whether it is run at boot.  
+
+
+Q:	"Does lpstyl work with the StyleWriter 4100?"
+
+A:	No, but the 4100 is supported directly by GhostScript.  I believe
+	the option for the HP 550, 560, or 6xxC is what you want.
+
+
+Q:	"Where can I get the Apple drivers for the StyleWriter XXX?"
+
+A:	You'd be surprised how often I get this one.   The following page
+	will tell you which driver software supports your StyleWriter:
+	
+	http://til.info.apple.com/techinfo.nsf/artnum/n30153
+	
+	All of the printers supported by lpstyl are listed as working with 
+	either the "Color StyleWriter 1500" driver:
+	
+	http://asu.info.apple.com/swupdates.nsf/artnum/n10264
+	
+	or the "Color StyleWriter 2500" driver:
+	
+	http://asu.info.apple.com/swupdates.nsf/artnum/n10265
+
+

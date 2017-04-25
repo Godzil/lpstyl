@@ -1,0 +1,7 @@
+#!/bin/sh
+
+/usr/local/gnu/bin/gs -q -dNOPAUSE -sDEVICE=bitcmyk \
+	-r360x360 -g3060x3960 \
+	-sOutputFile=- - \
+|/usr/local/sbin/lpstyl -t bitcmyk -w 3060 -h 3960
+

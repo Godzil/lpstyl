@@ -1,0 +1,6 @@
+#!/bin/sh
+
+/usr/local/gnu/bin/gs -q -dNOPAUSE -dSAFER -sDEVICE=pbmraw -r360x360 \
+	-sOutputFile=- - \
+|/usr/local/sbin/lpstyl
+

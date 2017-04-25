@@ -1,0 +1,11 @@
+# Makefile for compiling in AppleTalk support in lpstyl.
+
+# Change /usr/local/include to the directory containing the 'atalk' includes
+# directory, and /usr/local/lib to the directory containing libatalk.a.
+
+CFLAGS= -g -Wall -DATALK=1 -I/usr/local/include
+LINKFLAGS= -L/usr/local/lib -latalk
+
+lpstyl: lpstyl.o adsp.o 
+	${CC} ${CFLAGS} lpstyl.o adsp.o ${LINKFLAGS} -o lpstyl
+

@@ -1,0 +1,6 @@
+#!/bin/sh
+
+cat $* |\
+/usr/local/gnu/bin/gs -q -dNOPAUSE -sDEVICE=pbmraw -r360x360 \
+	-sOutputFile=- - \
+|/usr/local/sbin/lpstyl -t pbmraw -f /dev/stylewriter

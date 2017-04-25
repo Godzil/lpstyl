@@ -1,0 +1,17 @@
+lp|Apple Stylewriter for ASCII, using gs for rasterization:\
+	:lp=/dev/stylewriter:sd=/var/spool/stylps:\
+	:px#3060:py#3960:sh:sf:rw:\
+	:if=/usr/local/sbin/stylascii:\
+	:lf=/var/log/lpd-errs:
+
+stylps|Apple Stylewriter for PostScript, using gs for rasterization:\
+	:lp=/dev/stylewriter:sd=/var/spool/stylps:\
+	:px#3060:py#3960:sh:sf:rw:\
+	:if=/usr/local/sbin/stylps:\
+	:lf=/var/log/lpd-errs:
+
+cstylps|Apple Stylewriter for color postscript, using gs for rasterization:\
+	:lp=/dev/stylewriter:sd=/var/spool/stylps:\
+	:px#3060:py#3960:sh:sf:rw:\
+	:if=/usr/local/sbin/stylps-color:\
+	:lf=/var/log/lpd-errs:

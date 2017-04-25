@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# Substitute your favorite ascii-to-postscript filter here...
+# note: with gnu enscript, the '--pass-through' flag makes the filter
+# transparent to postscript files.  Handy.
+/usr/local/bin/enscript -M Letterdj --pass-through --lineprinter -o - |\
+/usr/local/gnu/bin/gs -q -dNOPAUSE -sDEVICE=pbmraw -r360x360 \
+	-sOutputFile=- - \
+|/usr/local/sbin/lpstyl -p a4
+
