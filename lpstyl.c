@@ -296,9 +296,9 @@ int noMargins = 0;
 int doReset = 1;
 int bufferHelp = 0;
 int atalk_connection = 0;
-char *atalk_username = NULL;
 
 #ifdef ATALK
+    char *atalk_username = NULL;
 	struct adsp_socket s1, s2;
 	struct adsp_endp end1, end2;
 
@@ -339,8 +339,10 @@ int main(int argc, char **argv)
 	int ch;
 	
 	ProcName = argv[0];
-	
+
+#ifdef ATALK
 	atalk_username = getlogin();
+#endif
 
 	/* Enable print pause */
 	signal(SIGUSR1, handler);
@@ -386,7 +388,13 @@ int main(int argc, char **argv)
 			break;
 
 			case 'u':	/* username for setting status of appletalk printer */
+#ifdef ATALK
 				atalk_username = optarg;
+#else
+                fprintf(stderr, "%s: AppleTalk support not compiled in.\n",
+                        ProcName);
+                exit(1);
+#endif
 			break;
 			
 			case 't':		/* file format */
